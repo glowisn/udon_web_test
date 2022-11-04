@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   responsive_framework: ^0.2.0
   adaptive_theme: ^3.1.1
+  flutter_screenutil: ^5.6.0
 
 dev_dependencies:
   flutter_test:

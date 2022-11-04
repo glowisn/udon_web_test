@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,24 +10,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ScreenUtilInit(
+      designSize: const Size(1920, 1080),
+      minTextAdapt: true,
+      splitScreenMode: true,
       builder: (context, child) {
-        return ResponsiveWrapper.builder(child,
-            maxWidth: 1200,
-            minWidth: 480,
-            defaultScale: true,
-            breakpoints: [
-              ResponsiveBreakpoint.resize(480, name: MOBILE),
-              ResponsiveBreakpoint.autoScale(800, name: TABLET),
-              ResponsiveBreakpoint.resize(1000, name: DESKTOP),
-            ],
-            background: Container(color: Color(0xFFF5F5F5)));
-      },
-      routes: <String, WidgetBuilder>{
-        '/': ((context) => MyHomePage()),
-      },
-      initialRoute: '/',
-    );
+      return const MaterialApp(
+        home: MyHomePage(),
+      );
+    });
   }
 }
 
@@ -39,14 +30,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,8 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Container(
           color: Colors.blue,
-          width: 600,
-          height: 600,
+          width: 600.w,
+          height: 600.h,
         ));
   }
 }
